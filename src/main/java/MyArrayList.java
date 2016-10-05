@@ -1,44 +1,49 @@
+package main.java;
+
 import java.util.Arrays;
 
 /**
  * Created by 3299779 on 07/09/2016.
  */
-public class myArrayList<E> {
+public class MyArrayList<E> {
 
     private static final int INIT_SIZE = 10;
     private Object elementData[]={};
-    private int size = 0;
+    private int mySize = 0;
     private Long id;
 
-    public myArrayList() {
+    public MyArrayList() {
         elementData = new Object[INIT_SIZE];
+        mySize = 0;
+
     }
 
-    public void add(E e) {
-        if (size == elementData.length) {
+
+    public void myAdd(E e) {
+        if (mySize == elementData.length) {
             expandList();
         }
-        elementData[size++] = e;
+        elementData[mySize++] = e;
     }
 
     @SuppressWarnings("unchecked")
-    public E get(int index) {
-        if (index < 0 || index >= size) {
+    public E myGet(int index) {
+        if (index < 0 || index >= mySize) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
         }
         return (E) elementData[index];
     }
 
-    public Object remove(int index) {
-        if (index < 0 || index >= size) {
+    public Object myRemove(int index) {
+        if (index < 0 || index >= mySize) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
         }
         Object removedElement = elementData[index];
 
-        for (int i = index; i < size; i++) {
+        for (int i = index; i < mySize; i++) {
             elementData[i] = elementData[i+1];
         }
-        size--;
+        mySize--;
 
         return removedElement;
     }
@@ -49,27 +54,29 @@ public class myArrayList<E> {
     }
 
     public int getSize() {
-        return size;
+        return mySize;
     }
 
-    myArrayList(Long id) {
+
+
+    MyArrayList(Long id) {
         this.id = id;
     }
 
     public boolean contains(Object o) {
         boolean returnVal = false;
 
-        if (o instanceof myArrayList) {
-            myArrayList ptr = (myArrayList) o;
+        if (o instanceof MyArrayList) {
+            MyArrayList ptr = (MyArrayList) o;
             returnVal = ptr.id.longValue() == this.id;
 
         }
         return returnVal;
     }
 
-    public String toString() {
+    public String myToString() {
         String stringList = "";
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < mySize; i++) {
             stringList = elementData[i] + " ";
             System.out.println(stringList);
         }
