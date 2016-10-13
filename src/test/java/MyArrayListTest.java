@@ -6,9 +6,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by 3299779 on 04/10/2016.
- */
 public class MyArrayListTest {
 
     MyArrayList<Integer> list = new MyArrayList<Integer>();
